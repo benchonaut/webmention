@@ -42,6 +42,12 @@ webmention receive --domain my_domain
 2. Simple web server for receiving webmentions (receiving, storage, validating, querying)
 3. Infrastructure for embedding webmention endpoint into a larger web server (receiving, storage)
 
+
+## building
+
+* test `cargo build`
+* prod `cargo install --path .`
+
 ## License
 
 This project is dually licensed under [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html) and [MIT license](https://opensource.org/licenses/MIT) and maintained by [marinintim.com](https://marinintim.com).

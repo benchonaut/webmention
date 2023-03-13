@@ -43,7 +43,7 @@ pub async fn send_mentions_for_link(u: &Url) -> Result<(), WebmentionError> {
     Ok(())
 }
 
-async fn send_link(input: (Url, Url)) -> Result<bool> {
+async fn send_link(input: (Url, Url)) -> Result<WebmentionAcceptance> {
     let (source_url, target_url) = input;
     let mut mention = Webmention::from((&source_url, &target_url));
     mention.send().await.with_context(|| {
