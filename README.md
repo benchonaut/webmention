@@ -46,7 +46,8 @@ webmention receive --domain my_domain
 ## building
 
 * test `cargo build`
-* prod `cargo install --path .`
+* prod `cargo install webmention --bin webmention --features=cli --path .`
+* prod `cargo install webmention --bin webmention --features="cli receive" --features=cli --path .`
 
 ## License
 

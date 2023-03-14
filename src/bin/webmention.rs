@@ -8,6 +8,7 @@ use url::Url;
 use webmention::error::WebmentionError;
 use webmention::webmention::Webmention;
 
+
 async fn fetch_links(u: &Url) -> Result<std::collections::HashSet<Url>, WebmentionError> {
     let response = webmention::http_client::get(u).await?;
     let links = response.html.find_links().await;
@@ -43,7 +44,7 @@ pub async fn send_mentions_for_link(u: &Url) -> Result<(), WebmentionError> {
     Ok(())
 }
 
-async fn send_link(input: (Url, Url)) -> Result<WebmentionAcceptance> {
+async fn send_link(input: (Url, Url)) ->  Result<webmention::webmention::WebmentionAcceptance> {
     let (source_url, target_url) = input;
     let mut mention = Webmention::from((&source_url, &target_url));
     mention.send().await.with_context(|| {
