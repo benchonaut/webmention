@@ -1,6 +1,5 @@
 #FROM rustlang/rust:nightly-alpine
 FROM ubuntu
-
 #RUN apk add openssl-dev bash curl musl-dev
 RUN bash -c 'apt update && apt -y  install curl  && export RUSTUP_HOME=/opt/.rustup &&  export CARGO_HOME=/opt/.cargo &&  curl https://sh.rustup.rs -sSf >/tmp/rustup &&  sh /tmp/rustup  -y' || true 
 RUN echo 'export RUSTUP_HOME=/opt/.rustup && export CARGO_HOME=/opt/.cargo && export PATH="$CARGO_HOME/bin:$PATH"'  >> /etc/profile
@@ -17,5 +16,4 @@ RUN mv /cache/target /cache/.vendor /app
 #RUN bash -c 'find $HOME/.rust && ln -s $HOME/.rust/bin/* /usr/bin && ls -h1l $HOME/.rust/bin/'
 RUN ls -lh1 /app
 WORKDIR /app
-RUN bash -c ' source /etc/profile; cargo install webmention --bin webmention --features="cli receive" --features=cli --path .'
-
+RUN bash -c ' source /etc/profile; cargo install webmention --bin webmention --features="cli receive" --path .'
